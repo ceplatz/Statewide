@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>[Group Name] — Pawn, Firearms &amp; Estate Buying</title>
+<meta name="description" content="[Group Name]: A to Z Pawn (Norwich, Salem, Waterford / New London), [Firearms Store] and [Estate Buyer].">
+<meta name="theme-color" content="#0e0e0e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-intro:#0e0e0e;
+  --c-bg:#faf7f2;
+  --c-green:#006E51;
+  --c-green-dark:#005540;
+  --c-text:#1a1a1a;
+  --c-taupe:#c4b49a;
+  --c-cream-75:rgba(250,247,242,0.75);
+  --c-dark-75:rgba(14,14,14,0.72);
+  --c-white:#ffffff;
+
+  --f-serif:'Playfair Display',Georgia,serif;
+  --f-sans:'DM Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(0.4,0,0.2,1);
+  --dur-fast:0.25s; --dur-med:0.45s; --dur-slow:0.75s;
+  --max-w:1200px; --gutter:1.25rem;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--c-intro)}
+body{font-family:var(--f-sans);color:var(--c-text);font-size:1rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-serif);font-weight:500;line-height:1.15;margin:0}
+p{margin:0 0 1em}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--c-green);outline-offset:3px}
+.hub :focus-visible,.splash :focus-visible{outline-color:var(--c-white)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Splash ---------- */
+.splash{position:fixed;inset:0;z-index:1000;background:var(--c-intro);color:var(--c-bg);
+  display:grid;place-items:center;text-align:center;transition:opacity var(--dur-slow) var(--ease),visibility var(--dur-slow)}
+.splash.done{opacity:0;visibility:hidden;pointer-events:none}
+.splash__word{position:absolute;font-family:var(--f-serif);font-style:italic;font-weight:400;
+  font-size:clamp(2rem,9vw,4.5rem);opacity:0;padding:0 var(--gutter)}
+.splash__word.on{animation:pulse var(--word-dur,0.42s) var(--ease) forwards}
+@keyframes pulse{0%{opacity:0;transform:scale(.97)}30%,65%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.02)}}
+.splash__logo{position:absolute;display:flex;flex-direction:column;align-items:center;gap:1rem;opacity:0;transition:opacity var(--dur-slow) var(--ease)}
+.splash__logo.on{opacity:1}
+.splash__logo .mark{width:84px;height:84px}
+.splash__logo .name{font-family:var(--f-serif);font-size:clamp(1.4rem,5vw,2rem);letter-spacing:.04em}
+.splash__skip{position:absolute;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom));background:none;border:0;
+  color:var(--c-cream-75);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:.75rem}
+
+/* ---------- Placeholder logo mark ---------- */
+.mark{display:block}
+.mark circle{fill:none;stroke:currentColor;stroke-width:2}
+.mark text{fill:currentColor;font-family:var(--f-serif);font-size:30px;font-weight:500;text-anchor:middle}
+
+/* ---------- Hub ---------- */
+.hub{position:fixed;inset:0;display:flex;flex-direction:column;background:var(--c-intro)}
+.hub__brand{position:absolute;z-index:5;top:calc(.9rem + env(safe-area-inset-top));left:0;right:0;text-align:center;pointer-events:none;
+  color:var(--c-bg);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  transition:opacity var(--dur-med) var(--ease)}
+.hub.has-open .hub__brand{opacity:0}
+
+.panel{position:relative;flex:1 1 0;min-height:0;min-width:0;overflow:hidden;
+  transition:flex-grow var(--dur-slow) var(--ease),opacity var(--dur-med) var(--ease)}
+.hub.has-open .panel:not(.open){flex-grow:.0001;opacity:0;pointer-events:none}
+.panel + .panel{border-top:1px solid rgba(250,247,242,.18)}
+
+.panel__bg{position:absolute;inset:0;background:var(--bg);background-size:cover;background-position:center;
+  transform:scale(1.04);transition:transform var(--dur-slow) var(--ease)}
+.panel__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,14,.35),rgba(14,14,14,.65))}
+.panel.open .panel__bg{transform:scale(1)}
+/* Swap these gradients for real photos: --bg:url(photo.jpg) */
+.panel[data-id="pawn"]{--bg:linear-gradient(135deg,#3a3326,#6b5d43 60%,#8a7a5c)}
+.panel[data-id="firearms"]{--bg:linear-gradient(135deg,#1f2a26,#34473f 60%,#4c6459)}
+.panel[data-id="estate"]{--bg:linear-gradient(135deg,#2c2530,#4d4155 60%,#6e5f78)}
+
+.panel__face{position:absolute;inset:0;width:100%;border:0;background:none;color:var(--c-bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;text-align:center;padding:1rem var(--gutter);
+  transition:opacity var(--dur-med) var(--ease)}
+.panel__face .mark{width:56px;height:56px}
+.panel__name{font-family:var(--f-serif);font-weight:500;font-size:clamp(1.6rem,6vw,2.6rem);line-height:1.1}
+.panel__tag{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--c-cream-75)}
+.panel__cue{margin-top:.4rem;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid var(--c-taupe);padding-bottom:2px;color:var(--c-cream-75)}
+.panel:not(.open) .panel__face:hover .panel__cue{border-color:var(--c-bg);color:var(--c-bg)}
+.panel.open .panel__face{opacity:0;pointer-events:none}
+
+@media(min-width:900px){
+  .hub{flex-direction:row}
+  .panel + .panel{border-top:0;border-left:1px solid rgba(250,247,242,.18)}
+  .panel__face .mark{width:72px;height:72px}
+}
+
+/* ---------- Expanded content ---------- */
+.panel__content{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;background:var(--c-bg);
+  opacity:0;visibility:hidden;transition:opacity var(--dur-med) var(--ease) .2s,visibility 0s linear var(--dur-slow);
+  -webkit-overflow-scrolling:touch}
+.panel.open .panel__content{opacity:1;visibility:visible;transition-delay:.2s,0s}
+
+.close{position:fixed;z-index:20;top:calc(.75rem + env(safe-area-inset-top));right:.75rem;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--c-taupe);background:var(--c-bg);color:var(--c-text);display:none;place-items:center;font-size:1.25rem;line-height:1;
+  box-shadow:0 2px 12px rgba(0,0,0,.18);transition:background var(--dur-fast),color var(--dur-fast)}
+.close:hover{background:var(--c-green);color:var(--c-white);border-color:var(--c-green)}
+.hub.has-open .close{display:grid}
+.close:focus-visible{outline-color:var(--c-green)}
+
+.wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--gutter)}
+.section{padding:4rem 0}
+.section + .section{border-top:1px solid var(--c-taupe)}
+.label{display:block;font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--c-green);margin-bottom:.9rem}
+.h2{font-size:clamp(2rem,5vw,3.25rem);margin-bottom:1.25rem}
+.lede{font-size:1.1rem;color:var(--c-dark-75);max-width:60ch}
+
+.cover{position:relative;min-height:62vh;min-height:62svh;display:flex;align-items:flex-end;color:var(--c-bg);background:var(--bg);background-size:cover;background-position:center}
+.cover::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,14,.25),rgba(14,14,14,.75))}
+.cover .wrap{position:relative;width:100%;padding-bottom:3rem;padding-top:6rem}
+.cover .label{color:var(--c-taupe)}
+.cover h1{font-size:clamp(2.4rem,8vw,4.5rem);margin-bottom:1rem}
+.cover p{font-size:1.1rem;max-width:46ch;color:var(--c-cream-75)}
+
+.btn{display:inline-block;background:var(--c-green);color:var(--c-white);text-decoration:none;border:0;border-radius:2px;
+  padding:.95rem 1.6rem;font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  transition:background var(--dur-fast) var(--ease)}
+.btn:hover{background:var(--c-green-dark)}
+.btn--ghost{background:transparent;border:1px solid currentColor}
+.btn--ghost:hover{background:var(--c-bg);color:var(--c-text)}
+.btn-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+
+.split{display:grid;gap:2rem}
+.photo{min-height:260px;background:linear-gradient(135deg,var(--c-taupe),#e6dcc9);display:grid;place-items:center;
+  color:var(--c-dark-75);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;border-radius:2px}
+@media(min-width:800px){.split{grid-template-columns:1fr 1fr;align-items:center;gap:4rem}.photo{min-height:380px}}
+
+.tiles{display:grid;gap:1px;background:var(--c-taupe);border:1px solid var(--c-taupe);margin-top:2rem}
+@media(min-width:700px){.tiles{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.tiles{grid-template-columns:repeat(4,1fr)}}
+.tile{background:var(--c-bg);padding:1.75rem 1.5rem}
+.tile h3{font-size:1.35rem;margin-bottom:.5rem}
+.tile p{font-size:.95rem;color:var(--c-dark-75);margin:0}
+
+.notice{border-left:3px solid var(--c-green);background:var(--c-white);padding:1.1rem 1.25rem;font-size:.9rem;color:var(--c-dark-75);margin-top:2rem}
+.notice strong{color:var(--c-text)}
+
+/* Locations (A to Z Pawn) */
+.tabs{display:flex;gap:.5rem;overflow-x:auto;margin:1.5rem 0 0;padding-bottom:2px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:none;border:1px solid var(--c-taupe);border-radius:2px;padding:.7rem 1.2rem;
+  font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:background var(--dur-fast),color var(--dur-fast)}
+.tab[aria-selected="true"]{background:var(--c-green);border-color:var(--c-green);color:var(--c-white)}
+.loc{display:none;margin-top:1.5rem;border:1px solid var(--c-taupe);background:var(--c-white);padding:1.75rem 1.5rem}
+.loc.active{display:grid;gap:1.5rem;animation:fade var(--dur-med) var(--ease)}
+@media(min-width:800px){.loc.active{grid-template-columns:repeat(3,1fr)}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.loc h3{font-size:1.5rem;margin-bottom:.4rem}
+.loc dt{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--c-green);margin-bottom:.25rem}
+.loc dd{margin:0 0 1rem}
+
+.footer{background:var(--c-intro);color:var(--c-cream-75);padding:3rem 0 calc(3rem + env(safe-area-inset-bottom));font-size:.9rem}
+.footer .wrap{display:grid;gap:1.5rem}
+.footer h3{color:var(--c-bg);font-size:1.4rem}
+.footer a{text-decoration:none;border-bottom:1px solid var(--c-taupe)}
+.footer small{opacity:.7}
+@media(min-width:800px){.footer .wrap{grid-template-columns:2fr 1fr 1fr}}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity var(--dur-slow) var(--ease),transform var(--dur-slow) var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;transition-delay:0s!important}
+  .reveal{opacity:1;transform:none}
+  .panel{transition:opacity var(--dur-med) var(--ease)}
+  .hub.has-open .panel:not(.open){flex-grow:0}
+  .splash__word{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Splash -->
+<div class="splash" id="splash" role="presentation">
+  <span class="splash__word">Built on Trust.</span>
+  <span class="splash__word">Loyalty.</span>
+  <span class="splash__word">Experience.</span>
+  <span class="splash__word">Community.</span>
+  <span class="splash__word">Family.</span>
+  <span class="splash__word">Freedom.</span>
+  <div class="splash__logo" id="splashLogo">
+    <!-- PLACEHOLDER group logo: replace with real SVG/img -->
+    <svg class="mark" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="38"/><text x="42" y="52">G</text></svg>
+    <span class="name">[Group Name]</span>
+  </div>
+  <button class="splash__skip" id="splashSkip" type="button">Skip</button>
+</div>
+
+<!-- Hub -->
+<main class="hub" id="hub">
+  <div class="hub__brand" aria-hidden="true">[Group Name]</div>
+  <h1 class="sr-only">[Group Name] — choose a business</h1>
+
+  <button class="close" id="close" type="button" aria-label="Close and return to all businesses">&#10005;</button>
+
+  <!-- 1. A TO Z PAWN -->
+  <section class="panel" data-id="pawn" aria-label="A to Z Pawn">
+    <div class="panel__bg"></div>
+    <button class="panel__face" type="button" aria-expanded="false" aria-controls="content-pawn">
+      <svg class="mark" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="27"/><text x="30" y="39">AZ</text></svg>
+      <span class="panel__name">A to Z Pawn</span>
+      <span class="panel__tag">Loans · Buy · Sell</span>
+      <span class="panel__cue">Explore</span>
+    </button>
+    <div class="panel__content" id="content-pawn" tabindex="-1">
+      <header class="cover" style="--bg:linear-gradient(135deg,#3a3326,#6b5d43 60%,#8a7a5c)">
+        <div class="wrap">
+          <span class="label">Norwich · Salem · Waterford / New London</span>
+          <h1>A to Z Pawn</h1>
+          <p>[Tagline] Fair loans, honest deals, and a neighbor behind every counter.</p>
+          <div class="btn-row"><a class="btn" href="#pawn-visit" data-scroll>Find a location</a></div>
+        </div>
+      </header>
+
+      <section class="section" id="pawn-about"><div class="wrap split">
+        <div class="reveal">
+          <span class="label">Our story</span>
+          <h2 class="h2">One name. Three storefronts.</h2>
+          <p class="lede">[Placeholder] Write the A to Z Pawn story here: when it started, who runs it, and why people in eastern Connecticut keep coming back.</p>
+        </div>
+        <div class="photo reveal">[Photo placeholder]</div>
+      </div></section>
+
+      <section class="section"><div class="wrap">
+        <div class="reveal"><span class="label">What we do</span><h2 class="h2">Services</h2></div>
+        <div class="tiles reveal">
+          <div class="tile"><h3>Pawn Loans</h3><p>[Placeholder] Quick cash, fair terms, your item kept safe.</p></div>
+          <div class="tile"><h3>We Buy</h3><p>[Placeholder] Gold, jewelry, electronics, tools and more.</p></div>
+          <div class="tile"><h3>Shop Our Floor</h3><p>[Placeholder] Pre-owned finds at honest prices.</p></div>
+          <div class="tile"><h3>Layaway</h3><p>[Placeholder] Confirm which services each location offers.</p></div>
+        </div>
+      </div></section>
+
+      <section class="section" id="pawn-visit"><div class="wrap">
+        <div class="reveal">
+          <span class="label">Visit us</span>
+          <h2 class="h2">Three locations</h2>
+          <p class="lede">Same A to Z Pawn, three convenient towns.</p>
+        </div>
+        <div class="tabs reveal" role="tablist" aria-label="A to Z Pawn locations">
+          <button class="tab" role="tab" id="tab-norwich" aria-selected="true" aria-controls="loc-norwich" type="button">Norwich</button>
+          <button class="tab" role="tab" id="tab-salem" aria-selected="false" aria-controls="loc-salem" tabindex="-1" type="button">Salem</button>
+          <button class="tab" role="tab" id="tab-waterford" aria-selected="false" aria-controls="loc-waterford" tabindex="-1" type="button">Waterford / New London</button>
+        </div>
+        <div class="loc active" role="tabpanel" id="loc-norwich" aria-labelledby="tab-norwich">
+          <div><h3>Norwich</h3><p>[Photo / map placeholder]</p></div>
+          <dl><dt>Address</dt><dd>[Street address], Norwich, CT</dd><dt>Phone</dt><dd><a href="tel:+10000000000">[(860) 000-0000]</a></dd></dl>
+          <dl><dt>Hours</dt><dd>[Mon–Sat 10–6]<br>[Sun closed]</dd><a class="btn" href="#" data-directions>Get directions</a></dl>
+        </div>
+        <div class="loc" role="tabpanel" id="loc-salem" aria-labelledby="tab-salem">
+          <div><h3>Salem</h3><p>[Photo / map placeholder]</p></div>
+          <dl><dt>Address</dt><dd>[Street address], Salem, CT</dd><dt>Phone</dt><dd><a href="tel:+10000000000">[(860) 000-0000]</a></dd></dl>
+          <dl><dt>Hours</dt><dd>[Mon–Sat 10–6]<br>[Sun closed]</dd><a class="btn" href="#" data-directions>Get directions</a></dl>
+        </div>
+        <div class="loc" role="tabpanel" id="loc-waterford" aria-labelledby="tab-waterford">
+          <div><h3>Waterford / New London</h3><p>[Photo / map placeholder]</p></div>
+          <dl><dt>Address</dt><dd>[Street address], Waterford, CT</dd><dt>Phone</dt><dd><a href="tel:+10000000000">[(860) 000-0000]</a></dd></dl>
+          <dl><dt>Hours</dt><dd>[Mon–Sat 10–6]<br>[Sun closed]</dd><a class="btn" href="#" data-directions>Get directions</a></dl>
+        </div>
+      </div></section>
+
+      <footer class="footer"><div class="wrap">
+        <div><h3>[Group Name]</h3><p>A to Z Pawn · [Firearms Store] · [Estate Buyer]</p></div>
+        <div><p>[Email]<br>[Social links]</p></div>
+        <div><small>© <span class="yr"></span> [Group Name]. All rights reserved.</small></div>
+      </div></footer>
+    </div>
+  </section>
+
+  <!-- 2. FIREARMS -->
+  <section class="panel" data-id="firearms" aria-label="Firearms">
+    <div class="panel__bg"></div>
+    <button class="panel__face" type="button" aria-expanded="false" aria-controls="content-firearms">
+      <svg class="mark" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="27"/><text x="30" y="39">F</text></svg>
+      <span class="panel__name">[Firearms Store]</span>
+      <span class="panel__tag">Sales · Transfers · Service</span>
+      <span class="panel__cue">Explore</span>
+    </button>
+    <div class="panel__content" id="content-firearms" tabindex="-1">
+      <header class="cover" style="--bg:linear-gradient(135deg,#1f2a26,#34473f 60%,#4c6459)">
+        <div class="wrap">
+          <span class="label">Licensed &amp; local</span>
+          <h1>[Firearms Store]</h1>
+          <p>[Tagline] Knowledgeable staff, a safe and welcoming counter.</p>
+          <div class="btn-row"><a class="btn" href="#firearms-visit" data-scroll>Visit the store</a></div>
+        </div>
+      </header>
+      <section class="section"><div class="wrap split">
+        <div class="reveal"><span class="label">Our story</span><h2 class="h2">Responsible. Experienced.</h2>
+          <p class="lede">[Placeholder] Store story, FFL status, years in business, safety-first approach.</p></div>
+        <div class="photo reveal">[Photo placeholder]</div>
+      </div></section>
+      <section class="section"><div class="wrap">
+        <div class="reveal"><span class="label">What we do</span><h2 class="h2">Services</h2></div>
+        <div class="tiles reveal">
+          <div class="tile"><h3>New &amp; Used</h3><p>[Placeholder] Handguns, rifles, shotguns.</p></div>
+          <div class="tile"><h3>Transfers</h3><p>[Placeholder] FFL transfers for online purchases.</p></div>
+          <div class="tile"><h3>Accessories</h3><p>[Placeholder] Ammo, optics, holsters, safes.</p></div>
+          <div class="tile"><h3>Training</h3><p>[Placeholder] Confirm classes / gunsmithing offered.</p></div>
+        </div>
+        <div class="notice reveal"><strong>Compliance placeholder — needs legal review.</strong> Age restrictions, background-check / waiting-period language, and any "no online firearm sales" wording must be confirmed for Connecticut and the store's FFL before launch. Nothing here is final legal text.</div>
+      </div></section>
+      <section class="section" id="firearms-visit"><div class="wrap">
+        <div class="reveal"><span class="label">Visit us</span><h2 class="h2">Find the store</h2></div>
+        <div class="loc active reveal">
+          <div><h3>[Firearms Store]</h3><p>[Photo / map placeholder]</p></div>
+          <dl><dt>Address</dt><dd>[Street address], [Town], CT</dd><dt>Phone</dt><dd><a href="tel:+10000000000">[(860) 000-0000]</a></dd></dl>
+          <dl><dt>Hours</dt><dd>[Hours]</dd><a class="btn" href="#" data-directions>Get directions</a></dl>
+        </div>
+      </div></section>
+      <footer class="footer"><div class="wrap">
+        <div><h3>[Group Name]</h3><p>A to Z Pawn · [Firearms Store] · [Estate Buyer]</p></div>
+        <div><p>[Email]<br>[Social links]</p></div>
+        <div><small>© <span class="yr"></span> [Group Name]. All rights reserved.</small></div>
+      </div></footer>
+    </div>
+  </section>
+
+  <!-- 3. ESTATE BUYING -->
+  <section class="panel" data-id="estate" aria-label="Estate buying">
+    <div class="panel__bg"></div>
+    <button class="panel__face" type="button" aria-expanded="false" aria-controls="content-estate">
+      <svg class="mark" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="27"/><text x="30" y="39">E</text></svg>
+      <span class="panel__name">[Estate Buyer]</span>
+      <span class="panel__tag">Appraise · Buy · Settle</span>
+      <span class="panel__cue">Explore</span>
+    </button>
+    <div class="panel__content" id="content-estate" tabindex="-1">
+      <header class="cover" style="--bg:linear-gradient(135deg,#2c2530,#4d4155 60%,#6e5f78)">
+        <div class="wrap">
+          <span class="label">Estates · Collections · Downsizing</span>
+          <h1>[Estate Buyer]</h1>
+          <p>[Tagline] Respectful, discreet buying when a life's belongings need a new home.</p>
+          <div class="btn-row"><a class="btn" href="#estate-visit" data-scroll>Request an appraisal</a></div>
+        </div>
+      </header>
+      <section class="section"><div class="wrap split">
+        <div class="reveal"><span class="label">Our story</span><h2 class="h2">Handled with care.</h2>
+          <p class="lede">[Placeholder] How the estate-buying business works and why families trust it.</p></div>
+        <div class="photo reveal">[Photo placeholder]</div>
+      </div></section>
+      <section class="section"><div class="wrap">
+        <div class="reveal"><span class="label">What we do</span><h2 class="h2">Services</h2></div>
+        <div class="tiles reveal">
+          <div class="tile"><h3>Appraisals</h3><p>[Placeholder] Free, no-pressure valuations.</p></div>
+          <div class="tile"><h3>Full Estate Buyouts</h3><p>[Placeholder] One offer for the whole lot.</p></div>
+          <div class="tile"><h3>Collections</h3><p>[Placeholder] Coins, antiques, jewelry, tools.</p></div>
+          <div class="tile"><h3>Home Visits</h3><p>[Placeholder] We come to you.</p></div>
+        </div>
+      </div></section>
+      <section class="section" id="estate-visit"><div class="wrap">
+        <div class="reveal"><span class="label">Get in touch</span><h2 class="h2">Request an appraisal</h2></div>
+        <div class="loc active reveal">
+          <div><h3>[Estate Buyer]</h3><p>[Service area placeholder]</p></div>
+          <dl><dt>Phone</dt><dd><a href="tel:+10000000000">[(860) 000-0000]</a></dd><dt>Email</dt><dd>[email@example.com]</dd></dl>
+          <dl><dt>Hours</dt><dd>[By appointment]</dd><a class="btn" href="tel:+10000000000">Call now</a></dl>
+        </div>
+      </div></section>
+      <footer class="footer"><div class="wrap">
+        <div><h3>[Group Name]</h3><p>A to Z Pawn · [Firearms Store] · [Estate Buyer]</p></div>
+        <div><p>[Email]<br>[Social links]</p></div>
+        <div><small>© <span class="yr"></span> [Group Name]. All rights reserved.</small></div>
+      </div></footer>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(s,r){return (r||document).querySelector(s)};
+  var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+
+  /* ----- Splash ----- */
+  var splash = $('#splash'), logo = $('#splashLogo'), words = $$('.splash__word');
+  var timers = [], finished = false;
+  var WORD_MS = 420, LOGO_MS = 1000;
+  function finishSplash(){
+    if(finished) return; finished = true;
+    timers.forEach(clearTimeout);
+    splash.classList.add('done');
+    setTimeout(function(){ splash.style.display = 'none'; }, 900);
+  }
+  if(reduce){
+    logo.classList.add('on');
+    timers.push(setTimeout(finishSplash, 700));
+  } else {
+    splash.style.setProperty('--word-dur', WORD_MS/1000 + 's');
+    words.forEach(function(w,i){ timers.push(setTimeout(function(){ w.classList.add('on'); }, 250 + i*WORD_MS)); });
+    var t = 250 + words.length*WORD_MS;
+    timers.push(setTimeout(function(){ logo.classList.add('on'); }, t));
+    timers.push(setTimeout(finishSplash, t + LOGO_MS));
+  }
+  $('#splashSkip').addEventListener('click', finishSplash);
+
+  /* ----- Scroll reveal ----- */
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  },{threshold:.12}) : null;
+  $$('.reveal').forEach(function(el){ io ? io.observe(el) : el.classList.add('visible'); });
+
+  /* ----- Hub open / close ----- */
+  var hub = $('#hub'), closeBtn = $('#close'), panels = $$('.panel'), current = null;
+
+  function setInert(el, on){
+    if('inert' in el) el.inert = on; else el.setAttribute('aria-hidden', on ? 'true' : 'false');
+  }
+  panels.forEach(function(p){ setInert($('.panel__content',p), true); });
+
+  function openPanel(id, push){
+    var panel = $('.panel[data-id="'+id+'"]');
+    if(!panel) return;
+    current = panel;
+    panels.forEach(function(p){
+      var isOpen = p === panel, face = $('.panel__face',p), content = $('.panel__content',p);
+      p.classList.toggle('open', isOpen);
+      face.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      setInert(content, !isOpen);
+      setInert(face, true);
+    });
+    hub.classList.add('has-open');
+    var content = $('.panel__content', panel);
+    content.scrollTop = 0;
+    if(push) history.pushState({panel:id}, '', '#'+id);
+    setTimeout(function(){ closeBtn.focus({preventScroll:true}); }, reduce ? 0 : 300);
+  }
+
+  function closePanel(fromPop){
+    if(!current) return;
+    var panel = current, face = $('.panel__face', panel);
+    current = null;
+    panel.classList.remove('open');
+    hub.classList.remove('has-open');
+    panels.forEach(function(p){
+      setInert($('.panel__face',p), false);
+      setInert($('.panel__content',p), true);
+      $('.panel__face',p).setAttribute('aria-expanded','false');
+    });
+    face.focus({preventScroll:true});
+    if(!fromPop && history.state && history.state.panel) history.back();
+  }
+
+  panels.forEach(function(p){
+    $('.panel__face',p).addEventListener('click', function(){
+      if(!current) openPanel(p.dataset.id, true);
+    });
+  });
+  closeBtn.addEventListener('click', function(){ closePanel(false); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && current && splash.classList.contains('done')) closePanel(false);
+  });
+  window.addEventListener('popstate', function(e){
+    var id = e.state && e.state.panel;
+    if(id){ if(!current || current.dataset.id !== id) openPanel(id, false); }
+    else closePanel(true);
+  });
+  // Deep link: /#pawn, /#firearms, /#estate
+  var initial = location.hash.replace('#','');
+  if($('.panel[data-id="'+initial+'"]')){
+    history.replaceState(null,'',location.pathname);
+    history.pushState({panel:initial},'','#'+initial);
+    openPanel(initial,false);
+  }
+
+  /* ----- In-panel anchor scroll ----- */
+  $$('[data-scroll]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = $(a.getAttribute('href'));
+      if(target) target.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+    });
+  });
+
+  /* ----- Location tabs ----- */
+  var tabs = $$('.tab');
+  function selectTab(tab){
+    tabs.forEach(function(t){
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      $('#'+t.getAttribute('aria-controls')).classList.toggle('active', on);
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click', function(){ selectTab(t); });
+    t.addEventListener('keydown', function(e){
+      var n = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if(!n) return;
+      var next = tabs[(i+n+tabs.length)%tabs.length];
+      selectTab(next); next.focus(); e.preventDefault();
+    });
+  });
+
+  /* ----- Placeholder links & footer year ----- */
+  $$('[data-directions]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); }); });
+  $$('.yr').forEach(function(s){ s.textContent = new Date().getFullYear(); });
+})();
+</script>
+</body>
+</html>
