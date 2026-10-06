@@ -171,6 +171,12 @@ button{font:inherit;color:inherit;cursor:pointer}
 .cards--2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 .card .label{margin-bottom:.5rem}
 .todo{font-size:.85rem;font-style:italic;color:var(--c-green);border-top:1px dashed var(--c-taupe);padding-top:.75rem;margin-top:1rem}
+.steps.steps--4{grid-template-columns:1fr}
+@media(min-width:700px){.steps.steps--4{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.steps.steps--4{grid-template-columns:repeat(4,1fr)}}
+.promise{text-align:center;max-width:760px}
+.promise .lede{margin-left:auto;margin-right:auto}
+.todo-inline{border-bottom:1px dashed rgba(255,255,255,.7)}
 .card .note{font-size:.9rem;border-top:1px solid #e6dcc9;padding-top:1rem;margin:0}
 .steps{list-style:none;margin:2rem 0 0;padding:0;display:grid;gap:2rem}
 @media(min-width:800px){.steps{grid-template-columns:repeat(3,1fr);gap:2.5rem}}
@@ -485,27 +491,82 @@ button{font:inherit;color:inherit;cursor:pointer}
       <header class="cover"><div class="art photo-estate" role="img" aria-hidden="true"></div>
         <div class="wrap">
           <span class="label">Estate Acquisition &amp; Liquidation Specialists</span>
-          <h1>New England Estate Buyers</h1>
-          <p>[Tagline] Respectful, discreet buying when a life's belongings need a new home.</p>
-          <div class="btn-row"><a class="btn" href="#estate-visit" data-scroll>Request an appraisal</a></div>
+          <h1>Experience you can rely on. Discretion you can trust.</h1>
+          <p>Estate purchases, liquidations, and property preparation across New England, handled with care from the first call to the final detail.</p>
+          <div class="btn-row">
+            <a class="btn" href="#estate-visit" data-scroll>Request a Consultation</a>
+            <a class="btn btn--ghost" href="#estate-how" data-scroll>How It Works</a>
+          </div>
         </div>
       </header>
-      <section class="section"><div class="wrap split">
-        <div class="reveal"><span class="label">Our story</span><h2 class="h2">Handled with care.</h2>
-          <p class="lede">[Placeholder] How the estate-buying business works and why families trust it.</p></div>
+
+      <section class="section" id="estate-about"><div class="wrap split">
+        <div class="reveal">
+          <span class="label">About us</span>
+          <h2 class="h2 h2--sm">An estate is more than a collection of belongings.</h2>
+          <p class="lede">It's a lifetime of memories, milestones, and meaning. When the time comes to settle one, families deserve a partner who understands both its value and its significance.</p>
+          <p class="lede">New England Estate Buyers has helped families through this process for years. We bring deep experience, a broad network, and a genuine commitment to treating every home, and every family, with dignity.</p>
+        </div>
         <div class="photo flush reveal"><img data-logo="neb" alt="New England Estate Buyers"></div>
       </div></section>
+
       <section class="section"><div class="wrap">
-        <div class="reveal"><span class="label">What we do</span><h2 class="h2">Services</h2></div>
-        <div class="tiles reveal">
-          <div class="tile"><h3>Appraisals</h3><p>[Placeholder] Free, no-pressure valuations.</p></div>
-          <div class="tile"><h3>Full Estate Buyouts</h3><p>[Placeholder] One offer for the whole lot.</p></div>
-          <div class="tile"><h3>Collections</h3><p>[Placeholder] Coins, antiques, jewelry, tools.</p></div>
-          <div class="tile"><h3>Home Visits</h3><p>[Placeholder] We come to you.</p></div>
+        <div class="reveal">
+          <span class="label">Every estate, every size</span>
+          <h2 class="h2 h2--sm">No two estates are alike, and we tailor our approach to each one.</h2>
+          <p class="lede">We work with everything from a single apartment or modest family home to large, long-established estates with significant collections. Whatever the scope, you receive the same attention, professionalism, and care.</p>
         </div>
       </div></section>
+
+      <section class="section" id="estate-services"><div class="wrap">
+        <div class="reveal"><span class="label">Our services</span><h2 class="h2">How we can help.</h2></div>
+        <div class="cards reveal">
+          <div class="card"><h3>Full estate purchases</h3><p>We buy the entire contents of a home outright, giving you one clear, fair offer and a fast resolution.</p></div>
+          <div class="card"><h3>Estate liquidations &amp; sales</h3><p>We organize, appraise, and sell contents through the channel best suited to each item.</p></div>
+          <div class="card"><h3>Auction management</h3><p>For valuable pieces and collections, we manage auctions to reach the right buyers.</p></div>
+          <div class="card"><h3>Clean-outs</h3><p>When a property simply needs to be cleared, we handle it respectfully and efficiently.</p></div>
+          <div class="card"><h3>Vehicles &amp; other assets</h3><p>Cars, boats, equipment, and more, valued and sold as part of the estate.</p></div>
+          <div class="card"><h3>Real estate coordination</h3><p>Through trusted real estate partners, we help prepare, stage, and present the property itself.</p></div>
+        </div>
+      </div></section>
+
+      <section class="section" id="estate-distance"><div class="wrap split split--top">
+        <div class="reveal">
+          <span class="label">For families who live out of state</span>
+          <h2 class="h2 h2--sm">We are your eyes, ears, and hands.</h2>
+          <p class="lede">Settling an estate from hundreds of miles away is hard. Many of the families we serve can't be here in person, and they trust us to be their eyes, ears, and hands.</p>
+          <p class="lede">We keep you informed at every step, with clear communication, documented inventories, and transparent accounting. Important papers, photographs, and personal keepsakes are set aside for you. You'll always know where things stand, without needing to be in the room.</p>
+        </div>
+        <aside class="card reveal">
+          <h3 class="h3">From contents to closing</h3>
+          <p>We work directly with experienced real estate agents who can clean, stage, and prepare the home for sale. Coordinating the contents and the property together saves time, reduces stress, and helps ensure that everything, from heirlooms to the house itself, achieves its full and fair value.</p>
+        </aside>
+      </div></section>
+
+      <section class="section" id="estate-how"><div class="wrap">
+        <div class="reveal"><span class="label">How it works</span><h2 class="h2">Four steps, handled with care.</h2></div>
+        <ol class="steps steps--4 reveal">
+          <li><span class="num">1</span><h3>A confidential conversation.</h3><p>Tell us about the estate, your timeline, and your goals. There's no obligation.</p></li>
+          <li><span class="num">2</span><h3>An on-site assessment.</h3><p>We visit the property, review its contents, and listen to what matters most to your family.</p></li>
+          <li><span class="num">3</span><h3>A clear plan and offer.</h3><p>We recommend the right approach, whether a full purchase, a liquidation, an auction, or a combination, and explain it plainly.</p></li>
+          <li><span class="num">4</span><h3>We handle the rest.</h3><p>Sorting, selling, clearing, and preparing the property, while keeping you informed throughout.</p></li>
+        </ol>
+      </div></section>
+
+      <section class="section" id="estate-promise"><div class="wrap promise reveal">
+        <span class="label">Our promise</span>
+        <h2 class="h2">Discretion. Honesty. Respect.</h2>
+        <p class="lede">We understand that you're trusting us with more than property; you're trusting us with your family's story. We take that responsibility seriously, and we work to ensure your loved one's life is honored and that you receive the fairest, most trusted value possible.</p>
+      </div></section>
+
+      <section class="cta"><div class="wrap reveal">
+        <h2>Let us carry the weight.</h2>
+        <p>Call <span class="todo-inline">[phone]</span> or request a confidential consultation at <span class="todo-inline">[email]</span>. We're here when you're ready.</p>
+        <div class="btn-row"><a class="btn btn--ghost" href="#estate-visit" data-scroll>Request a Consultation</a></div>
+      </div></section>
+
       <section class="section" id="estate-visit"><div class="wrap">
-        <div class="reveal"><span class="label">Get in touch</span><h2 class="h2">Request an appraisal</h2></div>
+        <div class="reveal"><span class="label">Get in touch</span><h2 class="h2">Request a consultation</h2></div>
         <div class="loc active reveal">
           <div><h3>New England Estate Buyers</h3><img class="badge" data-logo="neb" alt="" style="width:100%;max-width:300px"></div>
           <dl><dt>Phone</dt><dd><a href="tel:+10000000000">[(860) 000-0000]</a></dd><dt>Email</dt><dd>[email@example.com]</dd><dd class="loc-btn"><a class="btn" href="tel:+10000000000">Call now</a></dd></dl>
