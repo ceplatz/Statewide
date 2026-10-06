@@ -205,6 +205,9 @@ button{font:inherit;color:inherit;cursor:pointer}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 .loc h3{font-size:1.5rem;margin-bottom:.4rem}
 .hours h4{font-family:var(--f-serif);font-weight:500;font-size:1.5rem;margin:0 0 .5rem}
+.appt{font-family:var(--f-serif);font-size:1.25rem;line-height:1.35;margin:0 0 .75rem}
+.appt strong{font-weight:500}
+.appt-sub{color:var(--c-dark-75);margin:0}
 .hours ul{list-style:none;margin:0 0 1.25rem;padding:0}
 .hours li{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;border-bottom:1px solid #e6dcc9;font-size:.95rem}
 .hours li:last-child{border-bottom:0}
@@ -570,7 +573,7 @@ button{font:inherit;color:inherit;cursor:pointer}
         <div class="loc active reveal">
           <div><h3>New England Estate Buyers</h3><img class="badge" data-logo="neb" alt="" style="width:100%;max-width:300px"></div>
           <dl><dt>Phone</dt><dd><a href="tel:+10000000000">[(860) 000-0000]</a></dd><dt>Email</dt><dd>[email@example.com]</dd><dd class="loc-btn"><a class="btn" href="tel:+10000000000">Call now</a></dd></dl>
-          <dl><dt>Hours</dt><dd>[By appointment]</dd></dl>
+          <div class="hours"><h4>Hours</h4><p class="appt"><strong>Available seven days a week, by appointment.</strong></p><p class="appt-sub">Contact us to schedule a time to view your property or to talk through your needs. We'll meet you when and where it works best for you and your family, with no obligation.</p></div>
         </div>
       </div></section>
       <footer class="footer"><div class="wrap">
