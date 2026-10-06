@@ -154,6 +154,32 @@ button{font:inherit;color:inherit;cursor:pointer}
 .tile h3{font-size:1.35rem;margin-bottom:.5rem}
 .tile p{font-size:.95rem;color:var(--c-dark-75);margin:0}
 
+.h2--sm{font-size:clamp(1.75rem,4.2vw,2.6rem)}
+.h3{font-size:1.4rem;margin:1.75rem 0 .6rem}
+.card .h3{margin-top:0}
+.split--top{align-items:start}
+.lede strong{color:var(--c-text)}
+.pull{font-family:var(--f-serif);font-style:italic;font-size:1.35rem;color:var(--c-green);margin:1.5rem 0 0;line-height:1.35}
+.card{background:var(--c-white);border:1px solid var(--c-taupe);padding:1.75rem 1.5rem}
+.card h3{font-size:1.3rem;margin-bottom:.4rem}
+.card p{color:var(--c-dark-75);font-size:.95rem}
+.card p:last-child{margin-bottom:0}
+.cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:2rem}
+.checks{list-style:none;margin:0 0 1.25rem;padding:0}
+.checks li{position:relative;padding:.35rem 0 .35rem 1.75rem;font-size:.95rem}
+.checks li::before{content:"";position:absolute;left:.15rem;top:.75rem;width:.7rem;height:.4rem;border-left:2px solid var(--c-green);border-bottom:2px solid var(--c-green);transform:rotate(-45deg)}
+.card .note{font-size:.9rem;border-top:1px solid #e6dcc9;padding-top:1rem;margin:0}
+.steps{list-style:none;margin:2rem 0 0;padding:0;display:grid;gap:2rem}
+@media(min-width:800px){.steps{grid-template-columns:repeat(3,1fr);gap:2.5rem}}
+.steps h3{font-size:1.5rem;margin:.9rem 0 .4rem}
+.steps p{color:var(--c-dark-75);margin:0}
+.num{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--c-green);color:var(--c-white);font-family:var(--f-serif);font-size:1.4rem}
+.cta{background:var(--c-green);color:var(--c-white);padding:4rem 0;text-align:center}
+.cta h2{font-size:clamp(1.9rem,5vw,3rem);margin-bottom:1rem}
+.cta p{max-width:56ch;margin:0 auto 1.5rem;color:rgba(255,255,255,.88);font-size:1.05rem}
+.cta .btn-row{justify-content:center}
+.cta .btn--ghost:hover{color:var(--c-green)}
+.btn--ghost{color:inherit}
 .notice{border-left:3px solid var(--c-green);background:var(--c-white);padding:1.1rem 1.25rem;font-size:.9rem;color:var(--c-dark-75);margin-top:2rem}
 .notice strong{color:var(--c-text)}
 
@@ -227,28 +253,87 @@ button{font:inherit;color:inherit;cursor:pointer}
       <header class="cover"><div class="art photo-pawn" role="img" aria-hidden="true"></div>
         <div class="wrap">
           <span class="label">Norwich · Salem · New London</span>
-          <h1>AZ Pawn</h1>
-          <p>[Tagline] Fair loans, honest deals, and a neighbor behind every counter.</p>
-          <div class="btn-row"><a class="btn" href="#pawn-visit" data-scroll>Find a location</a></div>
+          <h1>Fair value. Real people. A relationship you can count on.</h1>
+          <p>Southeastern Connecticut's trusted pawn shop for fast loans, honest offers, and quality pre-owned goods.</p>
+          <div class="btn-row">
+            <a class="btn" href="#pawn-loans" data-scroll>Get a Loan</a>
+            <a class="btn btn--ghost" href="#pawn-sell" data-scroll>Sell an Item</a>
+            <a class="btn btn--ghost" href="#pawn-shop" data-scroll>Shop Our Inventory</a>
+          </div>
         </div>
       </header>
 
       <section class="section" id="pawn-about"><div class="wrap split">
         <div class="reveal">
-          <span class="label">Our story</span>
-          <h2 class="h2">One name. Three storefronts.</h2>
-          <p class="lede">[Placeholder] Write the AZ Pawn story here: when it started, who runs it, and why people in eastern Connecticut keep coming back.</p>
+          <span class="label">About us</span>
+          <h2 class="h2 h2--sm">At AZ Pawn, we don't see a counter between us and our customers. We see neighbors.</h2>
+          <p class="lede">For years, people across southeastern Connecticut have trusted us when they needed cash quickly, wanted a fair price for something they own, or were hunting for a great deal. We've earned that trust the old-fashioned way: by listening, by being straight with people, and by treating every customer with respect.</p>
+          <p class="lede">We believe pawning is one of the most practical services a community can have. It's fast, it's private, and it gives you access to money without a credit check. We're proud to provide it, and prouder still of the relationships we've built doing it.</p>
         </div>
         <div class="photo reveal">[Photo placeholder]</div>
       </div></section>
 
-      <section class="section"><div class="wrap">
-        <div class="reveal"><span class="label">What we do</span><h2 class="h2">Services</h2></div>
-        <div class="tiles reveal">
-          <div class="tile"><h3>Pawn Loans</h3><p>[Placeholder] Quick cash, fair terms, your item kept safe.</p></div>
-          <div class="tile"><h3>We Buy</h3><p>[Placeholder] Gold, jewelry, electronics, tools and more.</p></div>
-          <div class="tile"><h3>Shop Our Floor</h3><p>[Placeholder] Pre-owned finds at honest prices.</p></div>
-          <div class="tile"><h3>Layaway</h3><p>[Placeholder] Confirm which services each location offers.</p></div>
+      <section class="section" id="pawn-loans"><div class="wrap split split--top">
+        <div class="reveal">
+          <span class="label">Pawn loans</span>
+          <h2 class="h2 h2--sm">Cash when you need it. Your item is safe while you get back on track.</h2>
+          <p class="lede">A pawn loan lets you borrow against something you own. Bring in your item, we'll appraise it on the spot, and if you accept our offer, you walk out with cash the same day. When you repay the loan, your item comes home to you, exactly as you left it.</p>
+          <p class="pull">No credit checks. No complicated paperwork. No judgment.</p>
+          <h3 class="h3">What makes us different</h3>
+          <p class="lede">Plenty of shops look at an item and name a number. We look a little further. We consider the item, its condition, and the care you've given it, and we also consider you: your history with us and what you need right now. Every loan is a conversation, not a formula.</p>
+        </div>
+        <aside class="card reveal">
+          <h3 class="h3">Your items are in good hands</h3>
+          <p>When you trust us with something you value, we treat it that way. Every pawned item is:</p>
+          <ul class="checks">
+            <li>Stored in a secure facility</li>
+            <li>Kept in a climate-controlled environment</li>
+            <li>Handled with care and respect from the day it arrives until the day you pick it up</li>
+          </ul>
+          <p class="note">Because we care for items so carefully, we look for the same in what comes through our door. Well-maintained items in good condition earn stronger loan and purchase offers.</p>
+        </aside>
+      </div></section>
+
+      <section class="section" id="pawn-sell"><div class="wrap">
+        <div class="reveal">
+          <span class="label">Buy &amp; sell</span>
+          <h2 class="h2 h2--sm">Skip the listings, the haggling, and the no-shows.</h2>
+          <p class="lede">Selling something online takes time: photos, postings, messages, strangers at your door. At AZ Pawn, you bring it in, get an honest offer, and leave with cash, often in minutes.</p>
+          <p class="lede">We work hard to pay the best price we can, because we don't want to buy from you once. We want you to come back. Our offers reflect current market value and demand, along with the condition of your item and how well it's been looked after.</p>
+          <p class="lede" id="pawn-shop"><strong>Shopping with us?</strong> Our showroom is stocked with quality pre-owned merchandise, inspected and fairly priced. Inventory changes daily, so stop by often.</p>
+        </div>
+      </div></section>
+
+      <section class="section" id="pawn-accept"><div class="wrap">
+        <div class="reveal"><span class="label">What we accept</span><h2 class="h2">Bring it in.</h2></div>
+        <div class="cards reveal">
+          <div class="card"><h3>Gold, silver &amp; jewelry</h3><p>Rings, chains, watches, coins, and bullion.</p></div>
+          <div class="card"><h3>Electronics</h3><p>Laptops, tablets, phones, TVs, cameras, and audio gear.</p></div>
+          <div class="card"><h3>Tools</h3><p>Power tools, hand tools, and professional equipment.</p></div>
+          <div class="card"><h3>Firearms</h3><p>Handguns, rifles, and shotguns, handled in full compliance with state and federal law.</p></div>
+          <div class="card"><h3>Musical instruments</h3><p>Guitars, amplifiers, keyboards, brass, and more.</p></div>
+          <div class="card"><h3>Gaming</h3><p>Consoles, controllers, and video games.</p></div>
+          <div class="card"><h3>Vehicles</h3><p>Cars, trucks, motorcycles, and boats.</p></div>
+        </div>
+        <p class="lede reveal" style="margin-top:2rem">Don't see your item? Call your nearest location. If it has value, we're happy to take a look.</p>
+      </div></section>
+
+      <section class="section" id="pawn-how"><div class="wrap">
+        <div class="reveal"><span class="label">How it works</span><h2 class="h2">Three simple steps.</h2></div>
+        <ol class="steps reveal">
+          <li><span class="num">1</span><h3>Bring it in.</h3><p>Visit us with your item and a valid government-issued photo ID.</p></li>
+          <li><span class="num">2</span><h3>Get an offer.</h3><p>We'll evaluate it on the spot and walk you through your options: a loan or a sale.</p></li>
+          <li><span class="num">3</span><h3>Leave with cash.</h3><p>Accept the offer and you're done. It's that simple.</p></li>
+        </ol>
+      </div></section>
+
+      <section class="cta"><div class="wrap reveal">
+        <h2>Respect, kindness, and a fair deal. Every time.</h2>
+        <p>Whether you need a little help this month or you're ready to sell, we're here to listen. Stop by one of our three locations or call the one nearest you. We look forward to meeting you.</p>
+        <div class="btn-row">
+          <a class="btn btn--ghost" href="tel:+18608894474">Norwich 860-889-4474</a>
+          <a class="btn btn--ghost" href="tel:+18602378054">Salem 860-237-8054</a>
+          <a class="btn btn--ghost" href="tel:+18604408155">New London 860-440-8155</a>
         </div>
       </div></section>
 
