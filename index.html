@@ -139,9 +139,21 @@ button{font:inherit;color:inherit;cursor:pointer}
 .btn{display:inline-block;background:var(--c-green);color:var(--c-white);text-decoration:none;border:0;border-radius:2px;
   padding:.95rem 1.6rem;font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
   transition:background var(--dur-fast) var(--ease)}
-.btn:hover{background:var(--c-green-dark)}
+@media (hover:hover){.btn:hover{background:var(--c-green-dark)}}
 .btn--ghost{background:transparent;border:1px solid currentColor}
-.btn--ghost:hover{background:var(--c-bg);color:var(--c-text)}
+@media (hover:hover){.btn--ghost:hover{background:var(--c-bg);color:var(--c-text)}}
+.btn--call{display:inline-flex;align-items:center;gap:.7rem;text-align:left}
+.btn--call .ph{width:1.15rem;height:1.15rem;flex:0 0 auto}
+.call-t{display:flex;flex-direction:column;line-height:1.25}
+.tap{display:none;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;opacity:.85}
+.tap--blk{color:var(--c-green);margin-top:.15rem}
+.tel{display:inline-block;font-weight:600}
+@media (hover:none),(max-width:700px){
+  .tap{display:block}
+  .btn--call{padding:.8rem 1.3rem}
+  .cta .btn-row{flex-direction:column;align-items:stretch}
+  .cta .btn--call{justify-content:center}
+}
 .btn-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
 
 .split{display:grid;gap:2rem}
@@ -229,7 +241,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .cta h2{font-size:clamp(1.9rem,5vw,3rem);margin-bottom:1rem}
 .cta p{max-width:56ch;margin:0 auto 1.5rem;color:rgba(255,255,255,.88);font-size:1.05rem}
 .cta .btn-row{justify-content:center}
-.cta .btn--ghost:hover{color:var(--c-green)}
+@media (hover:hover){.cta .btn--ghost:hover{color:var(--c-green)}}
 .btn--ghost{color:inherit}
 .notice{border-left:3px solid var(--c-green);background:var(--c-white);padding:1.1rem 1.25rem;font-size:.9rem;color:var(--c-dark-75);margin-top:2rem}
 .notice strong{color:var(--c-text)}
@@ -388,9 +400,9 @@ button{font:inherit;color:inherit;cursor:pointer}
         <h2>Respect, kindness, and a fair deal. Every time.</h2>
         <p>Whether you need a little help this month or you're ready to sell, we're here to listen. Stop by one of our three locations or call the one nearest you. We look forward to meeting you.</p>
         <div class="btn-row">
-          <a class="btn btn--ghost" href="tel:+18608894474">Norwich 860-889-4474</a>
-          <a class="btn btn--ghost" href="tel:+18602378054">Salem 860-237-8054</a>
-          <a class="btn btn--ghost" href="tel:+18604408155">New London 860-440-8155</a>
+          <a class="btn btn--ghost btn--call" href="tel:+18608894474"><svg class="ph" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="call-t"><small class="tap">Tap to call</small><span>Norwich 860-889-4474</span></span></a>
+          <a class="btn btn--ghost btn--call" href="tel:+18602378054"><svg class="ph" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="call-t"><small class="tap">Tap to call</small><span>Salem 860-237-8054</span></span></a>
+          <a class="btn btn--ghost btn--call" href="tel:+18604408155"><svg class="ph" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="call-t"><small class="tap">Tap to call</small><span>New London 860-440-8155</span></span></a>
         </div>
       </div></section>
 
@@ -407,17 +419,17 @@ button{font:inherit;color:inherit;cursor:pointer}
         </div>
         <div class="loc active" role="tabpanel" id="loc-norwich" aria-labelledby="tab-norwich">
           <div><h3>Norwich</h3><img class="badge" data-logo="norwich" alt="AZ Pawn of Norwich"></div>
-          <dl><dt>Address</dt><dd>442 East Main Street<br>Norwich, CT 06360</dd><dt>Phone</dt><dd><a href="tel:+18608894474">860-889-4474</a></dd><dd class="loc-btn"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=442+East+Main+Street%2C+Norwich%2C+CT+06360" target="_blank" rel="noopener">Get directions</a></dd></dl>
+          <dl><dt>Address</dt><dd>442 East Main Street<br>Norwich, CT 06360</dd><dt>Phone</dt><dd><a class="tel" href="tel:+18608894474">860-889-4474</a><small class="tap tap--blk">Tap to call</small></dd><dd class="loc-btn"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=442+East+Main+Street%2C+Norwich%2C+CT+06360" target="_blank" rel="noopener">Get directions</a></dd></dl>
           <div class="hours"><h4>Hours</h4><ul><li><span>Monday</span><span>9:00 AM – 6:00 PM</span></li><li><span>Tuesday</span><span>9:00 AM – 6:00 PM</span></li><li><span>Wednesday</span><span>9:00 AM – 6:00 PM</span></li><li><span>Thursday</span><span>9:00 AM – 6:00 PM</span></li><li><span>Friday</span><span>9:00 AM – 6:00 PM</span></li><li><span>Saturday</span><span>9:00 AM – 6:00 PM</span></li><li><span>Sunday</span><span>9:00 AM – 5:00 PM</span></li></ul></div>
         </div>
         <div class="loc" role="tabpanel" id="loc-salem" aria-labelledby="tab-salem">
           <div><h3>Salem</h3><img class="badge" data-logo="salem" alt="AZ Pawn of Salem"></div>
-          <dl><dt>Address</dt><dd>1 New London Road<br>Salem, CT 06420</dd><dt>Phone</dt><dd><a href="tel:+18602378054">860-237-8054</a></dd><dd class="loc-btn"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=1+New+London+Road%2C+Salem%2C+CT+06420" target="_blank" rel="noopener">Get directions</a></dd></dl>
+          <dl><dt>Address</dt><dd>1 New London Road<br>Salem, CT 06420</dd><dt>Phone</dt><dd><a class="tel" href="tel:+18602378054">860-237-8054</a><small class="tap tap--blk">Tap to call</small></dd><dd class="loc-btn"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=1+New+London+Road%2C+Salem%2C+CT+06420" target="_blank" rel="noopener">Get directions</a></dd></dl>
           <div class="hours"><h4>Hours</h4><ul><li><span>Monday</span><span>9:00 AM – 7:00 PM</span></li><li><span>Tuesday</span><span>9:00 AM – 7:00 PM</span></li><li><span>Wednesday</span><span>9:00 AM – 7:00 PM</span></li><li><span>Thursday</span><span>9:00 AM – 7:00 PM</span></li><li><span>Friday</span><span>9:00 AM – 7:00 PM</span></li><li><span>Saturday</span><span>9:00 AM – 6:00 PM</span></li><li><span>Sunday</span><span>10:00 AM – 6:00 PM</span></li></ul></div>
         </div>
         <div class="loc" role="tabpanel" id="loc-newlondon" aria-labelledby="tab-newlondon">
           <div><h3>New London</h3><img class="badge" data-logo="newlondon" alt="AZ Pawn of New London"></div>
-          <dl><dt>Address</dt><dd>500 Vauxhall Street<br>New London, CT 06320</dd><dt>Phone</dt><dd><a href="tel:+18604408155">860-440-8155</a></dd><dd class="loc-btn"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=500+Vauxhall+Street%2C+New+London%2C+CT+06320" target="_blank" rel="noopener">Get directions</a></dd></dl>
+          <dl><dt>Address</dt><dd>500 Vauxhall Street<br>New London, CT 06320</dd><dt>Phone</dt><dd><a class="tel" href="tel:+18604408155">860-440-8155</a><small class="tap tap--blk">Tap to call</small></dd><dd class="loc-btn"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=500+Vauxhall+Street%2C+New+London%2C+CT+06320" target="_blank" rel="noopener">Get directions</a></dd></dl>
           <div class="hours"><h4>Hours</h4><ul><li><span>Monday</span><span>9:00 AM – 6:00 PM</span></li><li><span>Tuesday</span><span>9:00 AM – 6:00 PM</span></li><li><span>Wednesday</span><span>9:00 AM – 6:00 PM</span></li><li><span>Thursday</span><span>9:00 AM – 6:00 PM</span></li><li><span>Friday</span><span>9:00 AM – 6:00 PM</span></li><li><span>Saturday</span><span>9:00 AM – 5:00 PM</span></li><li><span>Sunday</span><span>9:00 AM – 5:00 PM</span></li></ul></div>
         </div>
       </div></section>
@@ -492,8 +504,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 
       <section class="section"><div class="wrap">
         <div class="cards cards--2 reveal">
-          <div class="card card--photo card--tall sel-training" id="armory-training"><span class="label">Training</span><h3>Good training makes all the difference.</h3><p>Owning a firearm is a responsibility, and good training makes all the difference. Our courses cover safe handling and storage for new owners, through to skill-building for experienced shooters.</p><p class="card-cta"><strong>Contact us to learn more about our training schedule and classes.</strong></p><p class="card-cta"><a class="btn" href="tel:+18602375577">Call 860-237-5577</a></p></div>
-          <div class="card card--photo card--tall sel-gunsmithing" id="armory-gunsmithing"><span class="label">Gunsmithing</span><h3>Safe, reliable, and built your way.</h3><p>From routine cleaning and maintenance to repairs, upgrades, and custom work, our gunsmithing service keeps your firearms performing safely and reliably.</p><p class="card-cta"><strong>Contact us to learn about our gunsmithing services that meet your needs.</strong></p><p class="card-cta"><a class="btn" href="tel:+18602375577">Call 860-237-5577</a></p></div>
+          <div class="card card--photo card--tall sel-training" id="armory-training"><span class="label">Training</span><h3>Good training makes all the difference.</h3><p>Owning a firearm is a responsibility, and good training makes all the difference. Our courses cover safe handling and storage for new owners, through to skill-building for experienced shooters.</p><p class="card-cta"><strong>Contact us to learn more about our training schedule and classes.</strong></p><p class="card-cta"><a class="btn btn--call" href="tel:+18602375577"><svg class="ph" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="call-t"><small class="tap">Tap to call</small><span>Call 860-237-5577</span></span></a></p></div>
+          <div class="card card--photo card--tall sel-gunsmithing" id="armory-gunsmithing"><span class="label">Gunsmithing</span><h3>Safe, reliable, and built your way.</h3><p>From routine cleaning and maintenance to repairs, upgrades, and custom work, our gunsmithing service keeps your firearms performing safely and reliably.</p><p class="card-cta"><strong>Contact us to learn about our gunsmithing services that meet your needs.</strong></p><p class="card-cta"><a class="btn btn--call" href="tel:+18602375577"><svg class="ph" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="call-t"><small class="tap">Tap to call</small><span>Call 860-237-5577</span></span></a></p></div>
         </div>
       </div></section>
 
@@ -509,7 +521,7 @@ button{font:inherit;color:inherit;cursor:pointer}
         <h2>Come in with questions. Leave with confidence.</h2>
         <p>Visit us at 1 New London Road, Salem, or call 860-237-5577. Whether you're adding to a collection or buying your first firearm, we're ready to help.</p>
         <div class="btn-row">
-          <a class="btn btn--ghost" href="tel:+18602375577">Call 860-237-5577</a>
+          <a class="btn btn--ghost btn--call" href="tel:+18602375577"><svg class="ph" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="call-t"><small class="tap">Tap to call</small><span>Call 860-237-5577</span></span></a>
           <a class="btn btn--ghost" href="#firearms-visit" data-scroll>Hours &amp; directions</a>
         </div>
       </div></section>
@@ -518,7 +530,7 @@ button{font:inherit;color:inherit;cursor:pointer}
         <div class="reveal"><span class="label">Visit us</span><h2 class="h2">Find the store</h2></div>
         <div class="loc active reveal">
           <div><h3>The Armory Gun Store</h3><img class="badge" data-logo="armory" alt="The Armory Gun Store, Salem"></div>
-          <dl><dt>Address</dt><dd>1 New London Road<br>Salem, CT 06420</dd><dt>Phone</dt><dd><a href="tel:+18602375577">860-237-5577</a></dd><dd class="loc-btn"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=1+New+London+Road%2C+Salem%2C+CT+06420" target="_blank" rel="noopener">Get directions</a></dd></dl>
+          <dl><dt>Address</dt><dd>1 New London Road<br>Salem, CT 06420</dd><dt>Phone</dt><dd><a class="tel" href="tel:+18602375577">860-237-5577</a><small class="tap tap--blk">Tap to call</small></dd><dd class="loc-btn"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=1+New+London+Road%2C+Salem%2C+CT+06420" target="_blank" rel="noopener">Get directions</a></dd></dl>
           <div class="hours"><h4>Hours</h4><ul><li><span>Monday</span><span>9:00 AM – 7:00 PM</span></li><li><span>Tuesday</span><span>9:00 AM – 7:00 PM</span></li><li><span>Wednesday</span><span>9:00 AM – 7:00 PM</span></li><li><span>Thursday</span><span>9:00 AM – 7:00 PM</span></li><li><span>Friday</span><span>9:00 AM – 7:00 PM</span></li><li><span>Saturday</span><span>9:00 AM – 6:00 PM</span></li><li><span>Sunday</span><span>10:00 AM – 6:00 PM</span></li></ul></div>
         </div>
       </div></section>
@@ -626,7 +638,7 @@ button{font:inherit;color:inherit;cursor:pointer}
         <div class="reveal"><span class="label">Get in touch</span><h2 class="h2">Request a consultation</h2></div>
         <div class="loc active reveal">
           <div><h3>New England Estate Buyers</h3><img class="badge" data-logo="neb" alt="" style="width:100%;max-width:300px"></div>
-          <dl><dt>Phone</dt><dd><a href="tel:+10000000000">[(860) 000-0000]</a></dd><dt>Email</dt><dd>[email@example.com]</dd><dd class="loc-btn"><a class="btn" href="tel:+10000000000">Call now</a></dd></dl>
+          <dl><dt>Phone</dt><dd><a class="tel" href="tel:+10000000000">[(860) 000-0000]</a><small class="tap tap--blk">Tap to call</small></dd><dt>Email</dt><dd>[email@example.com]</dd><dd class="loc-btn"><a class="btn btn--call" href="tel:+10000000000"><svg class="ph" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="call-t"><small class="tap">Tap to call</small><span>Call now</span></span></a></dd></dl>
           <div class="hours"><h4>Hours</h4><p class="appt"><strong>Available seven days a week, by appointment.</strong></p><p class="appt-sub">Contact us to schedule a time to view your property or to talk through your needs. We'll meet you when and where it works best for you and your family, with no obligation.</p></div>
         </div>
       </div></section>
