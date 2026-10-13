@@ -153,6 +153,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .tap--blk{color:var(--c-green);margin-top:.15rem}
 .fb-link{display:inline-block;margin:.4rem .9rem 0 0;font-size:.85rem;color:var(--c-green);font-weight:600}
 .tel{display:inline-block;font-weight:600}
+@media (max-width:480px){.tab{padding:.7rem .55rem;font-size:.68rem;letter-spacing:.08em}.tabs{gap:.35rem}}
 @media (hover:none),(max-width:700px){
   .tap{display:block}
   .btn--call{padding:.8rem 1.3rem}
@@ -254,7 +255,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 /* Locations (AZ Pawn) */
 .tabs{display:flex;gap:.5rem;overflow-x:auto;margin:1.5rem 0 0;padding-bottom:2px;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex:0 0 auto;background:none;border:1px solid var(--c-taupe);border-radius:2px;padding:.7rem 1.2rem;
+.tab{flex:1 1 auto;background:none;border:1px solid var(--c-taupe);border-radius:2px;padding:.7rem 1.2rem;
   font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:background var(--dur-fast),color var(--dur-fast)}
 .tab[aria-selected="true"]{background:var(--c-green);border-color:var(--c-green);color:var(--c-white)}
 .loc{display:none;margin-top:1.5rem;border:1px solid var(--c-taupe);background:var(--c-white);padding:1.75rem 1.5rem}
