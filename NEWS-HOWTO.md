@@ -17,3 +17,5 @@ The "Latest updates" strips on the Armory and AZ Pawn pages read from a Google S
 The newest 3 show first; "Show more" reveals up to 12. A page with no posts hides its strip. Changes appear within a few minutes.
 
 **Tips:** summarize other sites' articles in your own words and link to the original; don't paste their text. `news-template.csv` has example rows.
+
+**Long posts:** only the first 3 lines of a snippet show; a "Show more" button appears on phones and desktop when the text is longer. Short summaries (1-3 sentences) still work best.
