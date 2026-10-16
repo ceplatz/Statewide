@@ -150,6 +150,14 @@ button{font:inherit;color:inherit;cursor:pointer}
 .btn{display:inline-block;background:var(--c-green);color:var(--c-white);text-decoration:none;border:0;border-radius:2px;
   padding:.95rem 1.6rem;font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
   transition:background var(--dur-fast) var(--ease)}
+.btn--red{background:#9e1b20;color:#fff}
+@media (hover:hover){.btn--red:hover{background:#7f1317}}
+@keyframes pulseGreen{0%,100%{box-shadow:0 0 0 0 rgba(0,110,81,0)}50%{box-shadow:0 0 14px 3px rgba(0,110,81,.55)}}
+@keyframes pulseRed{0%,100%{box-shadow:0 0 0 0 rgba(200,40,45,0)}50%{box-shadow:0 0 16px 4px rgba(200,40,45,.6)}}
+.btn--glow{animation:pulseGreen 2.8s ease-in-out infinite}
+.btn--red{animation:pulseRed 2.8s ease-in-out infinite;animation-delay:.9s}
+.btn--glow:hover,.btn--glow:focus-visible,.btn--red:hover,.btn--red:focus-visible{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.btn--glow,.btn--red{animation:none!important}}
 @media (hover:hover){.btn:hover{background:var(--c-green-dark)}}
 .btn--ghost{background:transparent;border:1px solid currentColor}
 @media (hover:hover){.btn--ghost:hover{background:var(--c-bg);color:var(--c-text)}}
@@ -546,7 +554,8 @@ button{font:inherit;color:inherit;cursor:pointer}
           <h1>A full-service gun store. A team that meets you where you are.</h1>
           <p>Handguns, rifles, shotguns, ammunition, accessories, training, gunsmithing, and suppressors, with knowledgeable staff who take the time to get it right.</p>
           <div class="btn-row">
-            <a class="btn" href="https://www.gunbroker.com/All/search?IncludeSellers=3022811" target="_blank" rel="noopener">Shop Firearms</a>
+            <a class="btn btn--glow" href="https://www.armoryct.com/" target="_blank" rel="noopener">Shop Our Inventory</a>
+            <a class="btn btn--red" href="https://www.gunbroker.com/All/search?IncludeSellers=3022811" target="_blank" rel="noopener">Shop on GunBroker</a>
             <a class="btn btn--ghost" href="#armory-suppressors" data-scroll>Suppressors</a>
             <a class="btn btn--ghost" href="#armory-training" data-scroll>Training &amp; Classes</a>
             <a class="btn btn--ghost" href="#armory-gunsmithing" data-scroll>Gunsmithing</a>
@@ -584,7 +593,7 @@ button{font:inherit;color:inherit;cursor:pointer}
           <div class="card card--photo sel-suppressors"><h3>Suppressors</h3><p>A curated selection, with step-by-step guidance through the federal NFA application process.</p><a class="card-more" href="#armory-suppressors" data-scroll>Suppressor sales &amp; transfers &rarr;</a></div>
         </div>
         <p class="lede reveal" style="margin-top:2rem">Looking for something specific? Ask about special orders.</p>
-        <div class="btn-row reveal"><a class="btn" href="https://www.gunbroker.com/All/search?IncludeSellers=3022811" target="_blank" rel="noopener">Shop on GunBroker</a></div>
+        <div class="btn-row reveal"><a class="btn btn--glow" href="https://www.armoryct.com/" target="_blank" rel="noopener">Shop Our Inventory</a><a class="btn btn--red" href="https://www.gunbroker.com/All/search?IncludeSellers=3022811" target="_blank" rel="noopener">Shop on GunBroker</a></div>
       </div></section>
 
       <section class="section" id="armory-suppressors"><div class="wrap">
